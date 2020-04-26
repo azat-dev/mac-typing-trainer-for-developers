@@ -24,6 +24,8 @@ struct KeyCode {
             return "⇧"
         case "KC_ENT":
             return "↵"
+        case let value where value.hasPrefix("KC_"):
+            return value.dropFirst("KC_".count).uppercased()
         default:
             return value
         }

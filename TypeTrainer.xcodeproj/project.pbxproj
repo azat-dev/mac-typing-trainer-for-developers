@@ -21,6 +21,7 @@
 		AAFB582A2455A3A700EA68AB /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = AAFB58292455A3A700EA68AB /* data.json */; };
 		AAFB582C2455A5C600EA68AB /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFB582B2455A5C600EA68AB /* Data.swift */; };
 		AAFB582F2455A90700EA68AB /* TokenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFB582E2455A90700EA68AB /* TokenView.swift */; };
+		AAFB58312455E60E00EA68AB /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFB58302455E60E00EA68AB /* LineView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		AAFB58292455A3A700EA68AB /* data.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 		AAFB582B2455A5C600EA68AB /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		AAFB582E2455A90700EA68AB /* TokenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenView.swift; sourceTree = "<group>"; };
+		AAFB58302455E60E00EA68AB /* LineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				AAFB582E2455A90700EA68AB /* TokenView.swift */,
+				AAFB58302455E60E00EA68AB /* LineView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				AAFB57F02455880E00EA68AB /* ContentView.swift in Sources */,
 				AAFB57EE2455880E00EA68AB /* AppDelegate.swift in Sources */,
 				AAFB582724558DB200EA68AB /* TextProcessing.swift in Sources */,
+				AAFB58312455E60E00EA68AB /* LineView.swift in Sources */,
 				AAFB582F2455A90700EA68AB /* TokenView.swift in Sources */,
 				AAFB582524558D7600EA68AB /* Token.swift in Sources */,
 				AAFB57F32455880E00EA68AB /* TypeTrainer.xcdatamodeld in Sources */,
