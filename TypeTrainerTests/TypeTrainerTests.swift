@@ -69,4 +69,10 @@ class TypeTrainerTests: XCTestCase {
         XCTAssertEqual(lines[0].count, 10)
         XCTAssertEqual(lines[1].count, 8)
     }
+    
+    func testLoadDataFromFile() {
+        let data: [String] = loadDataFromFile("data.json")
+        
+        XCTAssertEqual(data.count, 9)
+    }
 }
