@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AA000E3F245F724400FF8C67 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000E3E245F724400FF8C67 /* AppData.swift */; };
+		AA000E3F245F724400FF8C67 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000E3E245F724400FF8C67 /* AppManager.swift */; };
 		AA4112CC245CA9AB006F1C06 /* Sauce in Frameworks */ = {isa = PBXBuildFile; productRef = AA4112CB245CA9AB006F1C06 /* Sauce */; };
 		AA8EBC88245F02C900A22413 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8EBC87245F02C900A22413 /* Token.swift */; };
 		AA8EBC8C245F16BF00A22413 /* TextItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8EBC8B245F16BF00A22413 /* TextItemView.swift */; };
@@ -50,7 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AA000E3E245F724400FF8C67 /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
+		AA000E3E245F724400FF8C67 /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 		AA8EBC87245F02C900A22413 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		AA8EBC8B245F16BF00A22413 /* TextItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextItemView.swift; sourceTree = "<group>"; };
 		AA8EBC8D245F170900A22413 /* TextItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextItem.swift; sourceTree = "<group>"; };
@@ -182,7 +182,7 @@
 				AAC2C6072458F22F00CF3D6C /* KeyCombination.swift */,
 				AA8EBC87245F02C900A22413 /* Token.swift */,
 				AA8EBC8D245F170900A22413 /* TextItem.swift */,
-				AA000E3E245F724400FF8C67 /* AppData.swift */,
+				AA000E3E245F724400FF8C67 /* AppManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -347,7 +347,7 @@
 				AAFB582C2455A5C600EA68AB /* Data.swift in Sources */,
 				AAC2C5EA2458B2B800CF3D6C /* KeyEvent.swift in Sources */,
 				AAFB582324558D5D00EA68AB /* KeyCode.swift in Sources */,
-				AA000E3F245F724400FF8C67 /* AppData.swift in Sources */,
+				AA000E3F245F724400FF8C67 /* AppManager.swift in Sources */,
 				AA8EBC90245F3B2700A22413 /* TextView.swift in Sources */,
 				AA8EBC88245F02C900A22413 /* Token.swift in Sources */,
 				AAFB57F02455880E00EA68AB /* ContentView.swift in Sources */,

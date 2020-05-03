@@ -14,7 +14,7 @@ import SwiftUI
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     var window: NSWindow!
-    var appData = AppData()
+    var appData = AppManager()
 
     func catchKeyEvents() {
         func callback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent, userInfo: UnsafeMutableRawPointer?) -> Unmanaged<CGEvent>? {
@@ -29,7 +29,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 modifiers: modifiers
             )
             
-            let appData = Unmanaged<AppData>.fromOpaque(userInfo!).takeUnretainedValue()
+            let appData = Unmanaged<AppManager>.fromOpaque(userInfo!).takeUnretainedValue()
             
             let isProcessed = appData.onKeyEvent(keyEvent)
             if isProcessed {

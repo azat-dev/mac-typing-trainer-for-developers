@@ -12,7 +12,7 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @EnvironmentObject var appData: AppData
+    @EnvironmentObject var appData: AppManager
     
     var body: some View {
         ExerciseView(data: appData.excersizeData)
