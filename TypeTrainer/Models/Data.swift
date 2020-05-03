@@ -1,6 +1,7 @@
 import SwiftUI
 
-let typeData: [String] = loadDataFromFile("data.json")
+let strings: [String] = loadDataFromFile("data.json")
+var typeData = try! parseData(text: strings.joined(separator: "\n"))
 
 func loadDataFromFile<T: Decodable>(_ filename: String) -> T {
     let data: Data

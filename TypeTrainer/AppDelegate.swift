@@ -9,11 +9,47 @@
 import Cocoa
 import SwiftUI
 
+
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     var window: NSWindow!
 
+    func catchKeyEvents() {
+        func callback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent, userInfo: UnsafeMutableRawPointer?) -> Unmanaged<CGEvent>? {
+            let keyCode = event.getIntegerValueField(.keyboardEventKeycode)
+            var modifiers = event.flags
+            modifiers.remove(.maskNonCoalesced)
+            
+            
+            let keyEvent = KeyEvent(
+                isKeyUp: type == .keyUp,
+                keyCode: keyCode,
+                modifiers: modifiers
+            )
+            
+            print("EVENT \(keyEvent)")
+            return Unmanaged.passRetained(event)
+        }
+        
+        let eventMask = (1 << CGEventType.keyDown.rawValue) | (1 << CGEventType.keyUp.rawValue)
+        guard let eventTap = CGEvent.tapCreate(
+            tap: .cgSessionEventTap,
+            place: .headInsertEventTap,
+            options: .defaultTap,
+            eventsOfInterest: CGEventMask(eventMask),
+            callback: callback,
+            userInfo: UnsafeMutableRawPointer(Unmanaged<AnyObject>.passUnretained(self).toOpaque())
+            ) else {
+                print("failed to create event tap")
+                return
+        }
+        
+        let runLoopSource = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, eventTap, 0)
+        CFRunLoopAddSource(CFRunLoopGetCurrent(), runLoopSource, .commonModes)
+        CGEvent.tapEnable(tap: eventTap, enable: true)
+        CFRunLoopRun()
+    }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
@@ -29,6 +65,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.setFrameAutosaveName("Main Window")
         window.contentView = NSHostingView(rootView: contentView)
         window.makeKeyAndOrderFront(nil)
+        
+        catchKeyEvents()
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

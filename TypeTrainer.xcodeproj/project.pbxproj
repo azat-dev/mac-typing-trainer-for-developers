@@ -3,10 +3,18 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA4112CC245CA9AB006F1C06 /* Sauce in Frameworks */ = {isa = PBXBuildFile; productRef = AA4112CB245CA9AB006F1C06 /* Sauce */; };
+		AA8EBC88245F02C900A22413 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8EBC87245F02C900A22413 /* Token.swift */; };
+		AA8EBC8C245F16BF00A22413 /* TextItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8EBC8B245F16BF00A22413 /* TextItemView.swift */; };
+		AA8EBC8E245F170900A22413 /* TextItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8EBC8D245F170900A22413 /* TextItem.swift */; };
+		AA8EBC90245F3B2700A22413 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8EBC8F245F3B2700A22413 /* TextView.swift */; };
+		AAC2C5E82458B18700CF3D6C /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC2C5E72458B18700CF3D6C /* KeyboardManager.swift */; };
+		AAC2C5EA2458B2B800CF3D6C /* KeyEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC2C5E92458B2B800CF3D6C /* KeyEvent.swift */; };
+		AAC2C6082458F22F00CF3D6C /* KeyCombination.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC2C6072458F22F00CF3D6C /* KeyCombination.swift */; };
 		AAFB57EE2455880E00EA68AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFB57ED2455880E00EA68AB /* AppDelegate.swift */; };
 		AAFB57F02455880E00EA68AB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFB57EF2455880E00EA68AB /* ContentView.swift */; };
 		AAFB57F32455880E00EA68AB /* TypeTrainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AAFB57F12455880E00EA68AB /* TypeTrainer.xcdatamodeld */; };
@@ -16,12 +24,10 @@
 		AAFB58072455880F00EA68AB /* TypeTrainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFB58062455880F00EA68AB /* TypeTrainerTests.swift */; };
 		AAFB58122455880F00EA68AB /* TypeTrainerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFB58112455880F00EA68AB /* TypeTrainerUITests.swift */; };
 		AAFB582324558D5D00EA68AB /* KeyCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFB582224558D5D00EA68AB /* KeyCode.swift */; };
-		AAFB582524558D7600EA68AB /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFB582424558D7600EA68AB /* Token.swift */; };
 		AAFB582724558DB200EA68AB /* TextProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFB582624558DB200EA68AB /* TextProcessing.swift */; };
 		AAFB582A2455A3A700EA68AB /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = AAFB58292455A3A700EA68AB /* data.json */; };
 		AAFB582C2455A5C600EA68AB /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFB582B2455A5C600EA68AB /* Data.swift */; };
-		AAFB582F2455A90700EA68AB /* TokenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFB582E2455A90700EA68AB /* TokenView.swift */; };
-		AAFB58312455E60E00EA68AB /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFB58302455E60E00EA68AB /* LineView.swift */; };
+		AAFB58312455E60E00EA68AB /* TextLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFB58302455E60E00EA68AB /* TextLineView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +48,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AA8EBC87245F02C900A22413 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		AA8EBC8B245F16BF00A22413 /* TextItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextItemView.swift; sourceTree = "<group>"; };
+		AA8EBC8D245F170900A22413 /* TextItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextItem.swift; sourceTree = "<group>"; };
+		AA8EBC8F245F3B2700A22413 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
+		AAC2C5E72458B18700CF3D6C /* KeyboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManager.swift; sourceTree = "<group>"; };
+		AAC2C5E92458B2B800CF3D6C /* KeyEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyEvent.swift; sourceTree = "<group>"; };
+		AAC2C6072458F22F00CF3D6C /* KeyCombination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCombination.swift; sourceTree = "<group>"; };
 		AAFB57EA2455880E00EA68AB /* TypeTrainer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TypeTrainer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAFB57ED2455880E00EA68AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AAFB57EF2455880E00EA68AB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -58,12 +71,10 @@
 		AAFB58112455880F00EA68AB /* TypeTrainerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeTrainerUITests.swift; sourceTree = "<group>"; };
 		AAFB58132455880F00EA68AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AAFB582224558D5D00EA68AB /* KeyCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCode.swift; sourceTree = "<group>"; };
-		AAFB582424558D7600EA68AB /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		AAFB582624558DB200EA68AB /* TextProcessing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextProcessing.swift; sourceTree = "<group>"; };
 		AAFB58292455A3A700EA68AB /* data.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 		AAFB582B2455A5C600EA68AB /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
-		AAFB582E2455A90700EA68AB /* TokenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenView.swift; sourceTree = "<group>"; };
-		AAFB58302455E60E00EA68AB /* LineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
+		AAFB58302455E60E00EA68AB /* TextLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLineView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA4112CC245CA9AB006F1C06 /* Sauce in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,9 +171,13 @@
 			isa = PBXGroup;
 			children = (
 				AAFB582224558D5D00EA68AB /* KeyCode.swift */,
-				AAFB582424558D7600EA68AB /* Token.swift */,
 				AAFB582624558DB200EA68AB /* TextProcessing.swift */,
 				AAFB582B2455A5C600EA68AB /* Data.swift */,
+				AAC2C5E72458B18700CF3D6C /* KeyboardManager.swift */,
+				AAC2C5E92458B2B800CF3D6C /* KeyEvent.swift */,
+				AAC2C6072458F22F00CF3D6C /* KeyCombination.swift */,
+				AA8EBC87245F02C900A22413 /* Token.swift */,
+				AA8EBC8D245F170900A22413 /* TextItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -177,8 +193,9 @@
 		AAFB582D2455A8F500EA68AB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				AAFB582E2455A90700EA68AB /* TokenView.swift */,
-				AAFB58302455E60E00EA68AB /* LineView.swift */,
+				AAFB58302455E60E00EA68AB /* TextLineView.swift */,
+				AA8EBC8B245F16BF00A22413 /* TextItemView.swift */,
+				AA8EBC8F245F3B2700A22413 /* TextView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -199,6 +216,9 @@
 			dependencies = (
 			);
 			name = TypeTrainer;
+			packageProductDependencies = (
+				AA4112CB245CA9AB006F1C06 /* Sauce */,
+			);
 			productName = TypeTrainer;
 			productReference = AAFB57EA2455880E00EA68AB /* TypeTrainer.app */;
 			productType = "com.apple.product-type.application";
@@ -271,6 +291,9 @@
 				Base,
 			);
 			mainGroup = AAFB57E12455880E00EA68AB;
+			packageReferences = (
+				AA4112CA245CA9AB006F1C06 /* XCRemoteSwiftPackageReference "Sauce" */,
+			);
 			productRefGroup = AAFB57EB2455880E00EA68AB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -316,14 +339,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAFB582C2455A5C600EA68AB /* Data.swift in Sources */,
+				AAC2C5EA2458B2B800CF3D6C /* KeyEvent.swift in Sources */,
 				AAFB582324558D5D00EA68AB /* KeyCode.swift in Sources */,
+				AA8EBC90245F3B2700A22413 /* TextView.swift in Sources */,
+				AA8EBC88245F02C900A22413 /* Token.swift in Sources */,
 				AAFB57F02455880E00EA68AB /* ContentView.swift in Sources */,
 				AAFB57EE2455880E00EA68AB /* AppDelegate.swift in Sources */,
 				AAFB582724558DB200EA68AB /* TextProcessing.swift in Sources */,
-				AAFB58312455E60E00EA68AB /* LineView.swift in Sources */,
-				AAFB582F2455A90700EA68AB /* TokenView.swift in Sources */,
-				AAFB582524558D7600EA68AB /* Token.swift in Sources */,
+				AA8EBC8E245F170900A22413 /* TextItem.swift in Sources */,
+				AAFB58312455E60E00EA68AB /* TextLineView.swift in Sources */,
+				AA8EBC8C245F16BF00A22413 /* TextItemView.swift in Sources */,
+				AAC2C5E82458B18700CF3D6C /* KeyboardManager.swift in Sources */,
 				AAFB57F32455880E00EA68AB /* TypeTrainer.xcdatamodeld in Sources */,
+				AAC2C6082458F22F00CF3D6C /* KeyCombination.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -653,6 +681,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AA4112CA245CA9AB006F1C06 /* XCRemoteSwiftPackageReference "Sauce" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Clipy/Sauce";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AA4112CB245CA9AB006F1C06 /* Sauce */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA4112CA245CA9AB006F1C06 /* XCRemoteSwiftPackageReference "Sauce" */;
+			productName = Sauce;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		AAFB57F12455880E00EA68AB /* TypeTrainer.xcdatamodeld */ = {
