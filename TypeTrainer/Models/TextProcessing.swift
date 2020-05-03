@@ -152,24 +152,30 @@ func parseKeyCombinationGroupText(text t: String) throws -> KeyCombination {
     return keyCombination
 }
 
-func splitToRows(items: [KeyCombination]) -> [[KeyCombination]] {
-    let lines = [[KeyCombination]]()
+func splitToRows(items: [Token]) -> [[Token]] {
+    var lines = [[Token]]()
+    var currentLine = [Token]()
+
+    for item in items {
+        currentLine.append(item)
+        if item.isGroup {
+            continue
+        }
+        
+        if item.character == "\n" {
+            lines.append(currentLine)
+            currentLine = [Token]()
+        }
+    }
+
+    if !currentLine.isEmpty {
+        lines.append(currentLine)
+    }
     
-    //    var currentLine = [KeyCombination]()
-    //
-    //    for item in items {
-    //        currentLine.append(item)
-    //        if item[0] == .returnKey {
-    //            lines.append(currentLine)
-    //            currentLine = [KeyCombination]()
-    //        }
-    //    }
-    //
-    //    lines.append(currentLine)
     return lines
 }
 
-func parseData(text: String) throws -> [Token] {
+func parseData(text: String) throws -> [[Token]] {
     
     var result = [Token]()
     
@@ -205,5 +211,5 @@ func parseData(text: String) throws -> [Token] {
         }
     }
     
-    return result
+    return splitToRows(items: result)
 }

@@ -14,6 +14,7 @@ import SwiftUI
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     var window: NSWindow!
+    var appData = AppData()
 
     func catchKeyEvents() {
         func callback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent, userInfo: UnsafeMutableRawPointer?) -> Unmanaged<CGEvent>? {
@@ -28,6 +29,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 modifiers: modifiers
             )
             
+            let appData = Unmanaged<AppData>.fromOpaque(userInfo!).takeUnretainedValue()
+            
+            let isProcessed = appData.onKeyEvent(keyEvent)
+            if isProcessed {
+                return nil
+            }
+            
             print("EVENT \(keyEvent)")
             return Unmanaged.passRetained(event)
         }
@@ -39,7 +47,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             options: .defaultTap,
             eventsOfInterest: CGEventMask(eventMask),
             callback: callback,
-            userInfo: UnsafeMutableRawPointer(Unmanaged<AnyObject>.passUnretained(self).toOpaque())
+            userInfo: UnsafeMutableRawPointer(Unmanaged<AnyObject>.passUnretained(self.appData).toOpaque())
             ) else {
                 print("failed to create event tap")
                 return
@@ -54,7 +62,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
-        let contentView = ContentView().environment(\.managedObjectContext, persistentContainer.viewContext)
+        let contentView = ContentView().environmentObject(self.appData).environment(\.managedObjectContext, persistentContainer.viewContext)
 
         // Create the window and set the content view. 
         window = NSWindow(

@@ -12,7 +12,7 @@ extension KeyCode {
     func representation() -> String {
         switch self {
             case .space:
-                return "˽"
+                return " "
             case .tab:
                     return "⟶|"
             case .command:
@@ -60,24 +60,38 @@ struct TextItemView: View {
     
     var body: some View {
         VStack {
-            Text(representation)
-                    .font(.headline)
+            if textItem.isActive {
+                Text(representation)
+                    .font(.title)
                     .fontWeight(.bold)
-                    .foregroundColor(Color.white)
-                    .padding(1.0)
-                    .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
-                    .background(/*@START_MENU_TOKEN@*/Color.blue/*@END_MENU_TOKEN@*/)
-                    .padding(/*@START_MENU_TOKEN@*/.vertical, 5.0/*@END_MENU_TOKEN@*/)
+                    .foregroundColor(Color(red: 117.0, green: 117.0, blue: 117.0, opacity: 1.0))
+                    .padding(3)
+                    .border(Color.blue, width: 3)
+            } else {
+                Text(representation)
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .foregroundColor(Color(red: 117.0, green: 117.0, blue: 117.0, opacity: 1.0))
+                        .padding(3)
+            }
         }
     }
 }
 
 struct TextItemView_Previews: PreviewProvider {
     static var previews: some View {
-        TextItemView(
-            textItem: TextItem(
-                token: Token("(KC_LGUI+KC_A)")
+        Group {
+            TextItemView(
+                textItem: TextItem(
+                    token: Token("(KC_LGUI+KC_A)")
+                )
             )
-        )
+            TextItemView(
+                textItem: TextItem(
+                    token: Token("(KC_LGUI+KC_A)"),
+                    isActive: true
+                )
+            )
+        }
     }
 }

@@ -12,5 +12,6 @@ struct TextItem {
     var token: Token
     var isCompleted = false
     var isWrongTyped = false
+    var isActive = false
 }
 

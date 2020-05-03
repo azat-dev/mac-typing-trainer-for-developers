@@ -41,18 +41,53 @@ class TypeTrainerTests: XCTestCase {
 
 
     func testParseData() {
-        let data = try! parseData(text: "Hello (KC_LGUI+KC_A)(KC_LGUI+KC_C)(KC_LGUI+KC_V)(KC_LGUI+KC_LSFT+KC_K)")
+        let lines = [
+            "Hello (KC_LGUI+KC_A)(KC_LGUI+KC_C)(KC_LGUI+KC_V)(KC_LGUI+KC_LSFT+KC_K)",
+            "Hello (KC_LGUI+KC_A)(KC_LGUI+KC_C)(KC_LGUI+KC_V)(KC_LGUI+KC_LSFT+KC_K)",
+            "Hello (KC_LGUI+KC_A)(KC_LGUI+KC_C)(KC_LGUI+KC_V)(KC_LGUI+KC_LSFT+KC_K)"
+        ]
+        let text = lines.joined(separator: "\n")
+        let data = try! parseData(text: text)
+        
         XCTAssertEqual(data, [
-            Token("H"),
-            Token("e"),
-            Token("l"),
-            Token("l"),
-            Token("o"),
-            Token(" "),
-            Token("(KC_LGUI+KC_A)"),
-            Token("(KC_LGUI+KC_C)"),
-            Token("(KC_LGUI+KC_V)"),
-            Token("(KC_LGUI+KC_LSFT+KC_K)"),
+            [
+                Token("H"),
+                Token("e"),
+                Token("l"),
+                Token("l"),
+                Token("o"),
+                Token(" "),
+                Token("(KC_LGUI+KC_A)"),
+                Token("(KC_LGUI+KC_C)"),
+                Token("(KC_LGUI+KC_V)"),
+                Token("(KC_LGUI+KC_LSFT+KC_K)"),
+                Token("\n")
+            ],
+            [
+                Token("H"),
+                Token("e"),
+                Token("l"),
+                Token("l"),
+                Token("o"),
+                Token(" "),
+                Token("(KC_LGUI+KC_A)"),
+                Token("(KC_LGUI+KC_C)"),
+                Token("(KC_LGUI+KC_V)"),
+                Token("(KC_LGUI+KC_LSFT+KC_K)"),
+                Token("\n")
+            ],
+            [
+                Token("H"),
+                Token("e"),
+                Token("l"),
+                Token("l"),
+                Token("o"),
+                Token(" "),
+                Token("(KC_LGUI+KC_A)"),
+                Token("(KC_LGUI+KC_C)"),
+                Token("(KC_LGUI+KC_V)"),
+                Token("(KC_LGUI+KC_LSFT+KC_K)"),
+            ],
         ])
     }
 //

@@ -11,16 +11,21 @@ import SwiftUI
 struct TextView: View {
     var data: [[TextItem]]
     var body: some View {
-        VStack {
+        VStack(alignment: .leading, spacing: 0.0) {
             ForEach(0..<data.endIndex) { lineIndex in
                 TextLineView(items: self.data[lineIndex])
+                .padding(0)
             }
         }
+        .padding(0.0)
+        .border(Color.orange)
     }
 }
 
 struct TextView_Previews: PreviewProvider {
     static var previews: some View {
-        TextView(data: typeData)
+        TextView(data: typeData.map { (items) -> [TextItem] in
+            items.map { token -> TextItem in TextItem(token: token) }
+        })
     }
 }

@@ -11,9 +11,11 @@ import SwiftUI
 
 
 struct ContentView: View {
+    
+    @EnvironmentObject var appData: AppData
+    
     var body: some View {
-        Text("Hello, World!")
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+        ExerciseView(data: appData.excersizeData)
     }
 }
 
