@@ -138,25 +138,59 @@ final class AppManager: ObservableObject {
         var markWrong = false
         var markCompleted = false
         
-        let isRightInput = true
+        func unifyModifiers(modifiers: [KeyCode]) -> Set<KeyCode> {
+            var modifiersMapping: [KeyCode: KeyCode] = [
+                .leftShift: .leftShift,
+                .rightShift: .leftShift,
+                
+                .leftAlt: .leftAlt,
+                .rightAlt: .leftAlt,
+                
+                .leftControl: .leftControl,
+                .rightControl: .leftControl,
+                
+                .command: .command
+            ]
+            
+            let unified = modifiers.map { modifiersMapping[$0]! }
+            return Set(unified)
+        }
+        
+        let rightKeyCombinations = activeItem.token.rightKeyCombinations
+        
+        let rightKeyCombination = rightKeyCombinations.first { keyCombination in
+            
+            let keyCombinationModifiersSet = unifyModifiers(modifiers: keyCombination.modifiers)
+            let eventModifiersSet = unifyModifiers(modifiers: keyEvent.modifiers)
+            
+            return keyCombination.keyCode == keyEvent.keyCode &&
+                keyCombinationModifiersSet == eventModifiersSet
+            
+        }
+        
+        let isRightInput = (rightKeyCombination != nil)
         let isDelete = (keyEvent.keyCode == .backspace && keyEvent.modifiers.isEmpty)
         
         var nextPosition: Position = activeItemPosition
         
-        if !isRightInput {
-            markWrong = true
+        if isDelete {
+            
+            markCompleted = false
+            markWrong = false
+            nextPosition = getPrevItemPosition(currentPosition: activeItemPosition)!
+        
+        } else if isRightInput {
+        
+            markCompleted = true
+            markWrong = false
+            nextPosition = getNextItemPosition(currentPosition: activeItemPosition)!
+            
         } else {
-            if isDelete {
-                markCompleted = false
-                markWrong = false
-                nextPosition = getPrevItemPosition(currentPosition: activeItemPosition)!
-            } else {
-                markCompleted = true
-                markWrong = false
-                nextPosition = getNextItemPosition(currentPosition: activeItemPosition)!
-            }
+        
+            markWrong = true
+            markCompleted = false
+            nextPosition = getNextItemPosition(currentPosition: activeItemPosition)!
         }
-
         
         updateItems { (position, item) in
             var newItem = item

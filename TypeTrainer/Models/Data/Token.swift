@@ -23,7 +23,7 @@ struct Token: Equatable {
         text.count > 0 && text.hasPrefix("(KC_") && text.hasSuffix(")")
     }
     
-    var keyCombinations: [KeyCombination] {
+    var rightKeyCombinations: [KeyCombination] {
         if isGroup {
             return [try! parseKeyCombinationGroupText(text: text)]
         }
@@ -34,7 +34,7 @@ struct Token: Equatable {
     }
     
     var character: Character {
-        let keyCombinations = self.keyCombinations
+        let keyCombinations = self.rightKeyCombinations
         
         for (_, _) in Token.charactersMap {
             let foundItem = Token.charactersMap.first {

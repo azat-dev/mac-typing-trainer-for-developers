@@ -39,7 +39,7 @@ struct TextItemView: View {
     var representationKeyCombination: String {
         var result = [String]()
         
-        let keyCombination = textItem.token.keyCombinations[0]
+        let keyCombination = textItem.token.rightKeyCombinations[0]
         
         for key in keyCombination.modifiers {
             result.append(key.representation())
@@ -61,18 +61,38 @@ struct TextItemView: View {
     var body: some View {
         VStack {
             if textItem.isActive {
+            
                 Text(representation)
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundColor(Color(red: 117.0, green: 117.0, blue: 117.0, opacity: 1.0))
                     .padding(3)
                     .border(Color.blue, width: 3)
+            
+            } else if textItem.isCompleted {
+                
+                Text(representation)
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .background(Color.green)
+                    .foregroundColor(Color.white)
+                    .padding(3)
+            
+            } else if textItem.isWrongTyped {
+            
+                Text(representation)
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .background(Color.red)
+                    .foregroundColor(Color.white)
+                    .padding(3)
+            
             } else {
                 Text(representation)
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundColor(Color(red: 117.0, green: 117.0, blue: 117.0, opacity: 1.0))
-                        .padding(3)
+                    .padding(3)
             }
         }
     }
@@ -86,10 +106,25 @@ struct TextItemView_Previews: PreviewProvider {
                     token: Token("(KC_LGUI+KC_A)")
                 )
             )
+            
             TextItemView(
                 textItem: TextItem(
                     token: Token("(KC_LGUI+KC_A)"),
                     isActive: true
+                )
+            )
+            
+            TextItemView(
+                textItem: TextItem(
+                    token: Token("(KC_LGUI+KC_A)"),
+                    isCompleted: true
+                )
+            )
+            
+            TextItemView(
+                textItem: TextItem(
+                    token: Token("(KC_LGUI+KC_A)"),
+                    isWrongTyped: true
                 )
             )
         }
