@@ -8,14 +8,14 @@
 
 import SwiftUI
 
-
-
 struct ContentView: View {
     
     @EnvironmentObject var appData: AppManager
     
     var body: some View {
-        ExerciseView(data: appData.excersizeData)
+        HStack {
+            LessonsListView(lessons: appData.lessons)
+        }
     }
 }
 
@@ -23,5 +23,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+        .environmentObject(AppManager())
+            .previewDevice("Mac")
     }
 }

@@ -20,14 +20,17 @@ final class AppManager: ObservableObject {
         }
     }
     
-    @Published var excersizeData: [[TextItem]]
+    var isKeyEventListenerActive = false
+    
+    @Published var lessons: [Lesson] = parsedLessons
+    @Published var currentLessonText: [[TextItem]]
     
     init() {
-        self.excersizeData = AppManager.getData()
+        self.currentLessonText = AppManager.getData()
     }
     
     static func getData() -> [[TextItem]] {
-        var result = typeData.map { (items) -> [TextItem] in
+        var result = parsedLessons[0].data.map { (items) -> [TextItem] in
             items.map { token -> TextItem in TextItem(token: token) }
         }
         
@@ -35,8 +38,16 @@ final class AppManager: ObservableObject {
         return result
     }
     
+    func startListeningKeyEvents() {
+        self.isKeyEventListenerActive = true
+    }
+    
+    func stopListeningKeyEvents() {
+        self.isKeyEventListenerActive = false
+    }
+    
     func firstItem(where condition: (TextItem, Position) -> Bool) -> (item: TextItem, position: Position)?  {
-        for (row, rowItems) in excersizeData.enumerated() {
+        for (row, rowItems) in currentLessonText.enumerated() {
             for (column, item) in rowItems.enumerated() {
                 let position = Position(row, column)
                 if condition(item, position) {
@@ -55,12 +66,12 @@ final class AppManager: ObservableObject {
     func getNextItemPosition(currentPosition: Position) -> Position? {
         var nextPosition = Position(currentPosition.row, currentPosition.column + 1)
         
-        if nextPosition.column >= excersizeData[currentPosition.row].count {
+        if nextPosition.column >= currentLessonText[currentPosition.row].count {
             nextPosition = Position(currentPosition.row + 1, 0)
         }
         
         
-        if nextPosition.row >= excersizeData[currentPosition.row].count {
+        if nextPosition.row >= currentLessonText[currentPosition.row].count {
             return nil
         }
         
@@ -71,7 +82,7 @@ final class AppManager: ObservableObject {
         var nextPosition = Position(currentPosition.row, currentPosition.column - 1)
         
         if nextPosition.column < 0 {
-            nextPosition = Position(currentPosition.row - 1, self.excersizeData[currentPosition.row - 1].count - 1)
+            nextPosition = Position(currentPosition.row - 1, self.currentLessonText[currentPosition.row - 1].count - 1)
         }
         
         
@@ -83,25 +94,12 @@ final class AppManager: ObservableObject {
     }
     
     func updateItems(change: (_ position: Position, _ item: TextItem) -> TextItem ) {
-        for (row, rowItems) in excersizeData.enumerated() {
+        for (row, rowItems) in currentLessonText.enumerated() {
             for (column, item) in rowItems.enumerated() {
-                self.excersizeData[row][column] = change(Position(row, column), item)
+                self.currentLessonText[row][column] = change(Position(row, column), item)
             }
         }
     }
-
-//
-//    func moveToNext() {
-//        let (_, activePosition) = self.getActiveItem()!
-//        let nexPosition = self.getNextItemPosition(currentPosition: activePosition)!
-//        print("NExt \(nexPosition)")
-//
-//        self.updateItems { (position, item) -> TextItem in
-//            var newItem = item
-//            newItem.isActive = (position == nexPosition)
-//            return newItem
-//        }
-//    }
     
     func markAsWrong(position itemPosition: Position) {
         updateItems { (position, item) -> TextItem in
@@ -127,6 +125,10 @@ final class AppManager: ObservableObject {
     }
     
     func onKeyEvent(_ keyEvent: KeyEvent) -> Bool {
+        if !isKeyEventListenerActive {
+            return false
+        }
+        
         if keyEvent.isKeyUp {
             return true
         }

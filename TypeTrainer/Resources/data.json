@@ -1,11 +1,16 @@
 [
-    "a a a a a a A A A A a A a A a A a A",
-    "aaaa AAAA aaaa AAAA aaaa AAAA aaaaa",
-    "aAaAaA aAaAaA aAaAa AaAaA AaAaA AAAA",
-    "(KC_LGUI+KC_A) (KC_LGUI+KC_A) (KC_LGUI+KC_A) (KC_LGUI+KC_A) (KC_LGUI+KC_A) (KC_LGUI+KC_A) (KC_LGUI+KC_A)",
-    "aaaa (KC_LGUI+KC_A) aaaa (KC_LGUI+KC_A) aaaa (KC_LGUI+KC_A) aaa (KC_LGUI+KC_A)",
-    "AAAA (KC_LGUI+KC_A) AAAA (KC_LGUI+KC_A) AAAA (KC_LGUI+KC_A) AAA (KC_LGUI+KC_A)",
-    "aaaa (KC_LGUI+KC_A) AAAA (KC_LGUI+KC_A) aaaa (KC_LGUI+KC_A) AAA (KC_LGUI+KC_A)",
-    "aAaA (KC_LGUI+KC_A) AAAA (KC_LGUI+KC_A) aAaA (KC_LGUI+KC_A) AAA (KC_LGUI+KC_A)",
-    "AaAa (KC_LGUI+KC_A) AAAA (KC_LGUI+KC_A) aAaA (KC_LGUI+KC_A) AAA (KC_LGUI+KC_A)"
+    {
+        "name": "Command and A",
+        "data": [
+            "a a a a a a A A A A a A a A a A a A",
+            "aaaa AAAA aaaa AAAA aaaa AAAA aaaaa",
+            "aAaAaA aAaAaA aAaAa AaAaA AaAaA AAAA",
+            "(KC_LGUI+KC_A) (KC_LGUI+KC_A) (KC_LGUI+KC_A) (KC_LGUI+KC_A) (KC_LGUI+KC_A) (KC_LGUI+KC_A) (KC_LGUI+KC_A)",
+            "aaaa (KC_LGUI+KC_A) aaaa (KC_LGUI+KC_A) aaaa (KC_LGUI+KC_A) aaa (KC_LGUI+KC_A)",
+            "AAAA (KC_LGUI+KC_A) AAAA (KC_LGUI+KC_A) AAAA (KC_LGUI+KC_A) AAA (KC_LGUI+KC_A)",
+            "aaaa (KC_LGUI+KC_A) AAAA (KC_LGUI+KC_A) aaaa (KC_LGUI+KC_A) AAA (KC_LGUI+KC_A)",
+            "aAaA (KC_LGUI+KC_A) AAAA (KC_LGUI+KC_A) aAaA (KC_LGUI+KC_A) AAA (KC_LGUI+KC_A)",
+            "AaAa (KC_LGUI+KC_A) AAAA (KC_LGUI+KC_A) aAaA (KC_LGUI+KC_A) AAA (KC_LGUI+KC_A)"
+        ]
+    }
 ]

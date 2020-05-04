@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		AA000E3F245F724400FF8C67 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000E3E245F724400FF8C67 /* AppManager.swift */; };
+		AA000E44245FF26100FF8C67 /* LessonsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000E43245FF26100FF8C67 /* LessonsListView.swift */; };
+		AA000E46245FF29F00FF8C67 /* LessonsListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000E45245FF29F00FF8C67 /* LessonsListItemView.swift */; };
+		AA000E4A245FF3ED00FF8C67 /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000E49245FF3ED00FF8C67 /* Lesson.swift */; };
 		AA4112CC245CA9AB006F1C06 /* Sauce in Frameworks */ = {isa = PBXBuildFile; productRef = AA4112CB245CA9AB006F1C06 /* Sauce */; };
 		AA8EBC88245F02C900A22413 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8EBC87245F02C900A22413 /* Token.swift */; };
 		AA8EBC8C245F16BF00A22413 /* TextItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8EBC8B245F16BF00A22413 /* TextItemView.swift */; };
 		AA8EBC8E245F170900A22413 /* TextItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8EBC8D245F170900A22413 /* TextItem.swift */; };
 		AA8EBC90245F3B2700A22413 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8EBC8F245F3B2700A22413 /* TextView.swift */; };
-		AA8EBC92245F461A00A22413 /* ExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8EBC91245F461A00A22413 /* ExerciseView.swift */; };
-		AAC2C5E82458B18700CF3D6C /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC2C5E72458B18700CF3D6C /* KeyboardManager.swift */; };
+		AA8EBC92245F461A00A22413 /* LessonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8EBC91245F461A00A22413 /* LessonView.swift */; };
 		AAC2C5EA2458B2B800CF3D6C /* KeyEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC2C5E92458B2B800CF3D6C /* KeyEvent.swift */; };
 		AAC2C6082458F22F00CF3D6C /* KeyCombination.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC2C6072458F22F00CF3D6C /* KeyCombination.swift */; };
 		AAFB57EE2455880E00EA68AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFB57ED2455880E00EA68AB /* AppDelegate.swift */; };
@@ -51,12 +53,14 @@
 
 /* Begin PBXFileReference section */
 		AA000E3E245F724400FF8C67 /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
+		AA000E43245FF26100FF8C67 /* LessonsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonsListView.swift; sourceTree = "<group>"; };
+		AA000E45245FF29F00FF8C67 /* LessonsListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonsListItemView.swift; sourceTree = "<group>"; };
+		AA000E49245FF3ED00FF8C67 /* Lesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
 		AA8EBC87245F02C900A22413 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		AA8EBC8B245F16BF00A22413 /* TextItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextItemView.swift; sourceTree = "<group>"; };
 		AA8EBC8D245F170900A22413 /* TextItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextItem.swift; sourceTree = "<group>"; };
 		AA8EBC8F245F3B2700A22413 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
-		AA8EBC91245F461A00A22413 /* ExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseView.swift; sourceTree = "<group>"; };
-		AAC2C5E72458B18700CF3D6C /* KeyboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManager.swift; sourceTree = "<group>"; };
+		AA8EBC91245F461A00A22413 /* LessonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonView.swift; sourceTree = "<group>"; };
 		AAC2C5E92458B2B800CF3D6C /* KeyEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyEvent.swift; sourceTree = "<group>"; };
 		AAC2C6072458F22F00CF3D6C /* KeyCombination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCombination.swift; sourceTree = "<group>"; };
 		AAFB57EA2455880E00EA68AB /* TypeTrainer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TypeTrainer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,6 +111,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA000E47245FF2C000FF8C67 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				AA8EBC87245F02C900A22413 /* Token.swift */,
+				AAC2C6072458F22F00CF3D6C /* KeyCombination.swift */,
+				AAC2C5E92458B2B800CF3D6C /* KeyEvent.swift */,
+				AAFB582B2455A5C600EA68AB /* Data.swift */,
+				AAFB582624558DB200EA68AB /* TextProcessing.swift */,
+				AAFB582224558D5D00EA68AB /* KeyCode.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		AAFB57E12455880E00EA68AB = {
 			isa = PBXGroup;
 			children = (
@@ -134,7 +151,6 @@
 				AAFB58282455A36300EA68AB /* Resources */,
 				AAFB582124558D4800EA68AB /* Models */,
 				AAFB57ED2455880E00EA68AB /* AppDelegate.swift */,
-				AAFB57EF2455880E00EA68AB /* ContentView.swift */,
 				AAFB57F42455880E00EA68AB /* Assets.xcassets */,
 				AAFB57F92455880E00EA68AB /* Main.storyboard */,
 				AAFB57FC2455880E00EA68AB /* Info.plist */,
@@ -174,15 +190,10 @@
 		AAFB582124558D4800EA68AB /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				AAFB582224558D5D00EA68AB /* KeyCode.swift */,
-				AAFB582624558DB200EA68AB /* TextProcessing.swift */,
-				AAFB582B2455A5C600EA68AB /* Data.swift */,
-				AAC2C5E72458B18700CF3D6C /* KeyboardManager.swift */,
-				AAC2C5E92458B2B800CF3D6C /* KeyEvent.swift */,
-				AAC2C6072458F22F00CF3D6C /* KeyCombination.swift */,
-				AA8EBC87245F02C900A22413 /* Token.swift */,
-				AA8EBC8D245F170900A22413 /* TextItem.swift */,
 				AA000E3E245F724400FF8C67 /* AppManager.swift */,
+				AA000E47245FF2C000FF8C67 /* Data */,
+				AA8EBC8D245F170900A22413 /* TextItem.swift */,
+				AA000E49245FF3ED00FF8C67 /* Lesson.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -201,7 +212,10 @@
 				AAFB58302455E60E00EA68AB /* TextLineView.swift */,
 				AA8EBC8B245F16BF00A22413 /* TextItemView.swift */,
 				AA8EBC8F245F3B2700A22413 /* TextView.swift */,
-				AA8EBC91245F461A00A22413 /* ExerciseView.swift */,
+				AAFB57EF2455880E00EA68AB /* ContentView.swift */,
+				AA8EBC91245F461A00A22413 /* LessonView.swift */,
+				AA000E45245FF29F00FF8C67 /* LessonsListItemView.swift */,
+				AA000E43245FF26100FF8C67 /* LessonsListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -348,16 +362,18 @@
 				AAC2C5EA2458B2B800CF3D6C /* KeyEvent.swift in Sources */,
 				AAFB582324558D5D00EA68AB /* KeyCode.swift in Sources */,
 				AA000E3F245F724400FF8C67 /* AppManager.swift in Sources */,
+				AA000E44245FF26100FF8C67 /* LessonsListView.swift in Sources */,
 				AA8EBC90245F3B2700A22413 /* TextView.swift in Sources */,
 				AA8EBC88245F02C900A22413 /* Token.swift in Sources */,
 				AAFB57F02455880E00EA68AB /* ContentView.swift in Sources */,
 				AAFB57EE2455880E00EA68AB /* AppDelegate.swift in Sources */,
+				AA000E4A245FF3ED00FF8C67 /* Lesson.swift in Sources */,
 				AAFB582724558DB200EA68AB /* TextProcessing.swift in Sources */,
 				AA8EBC8E245F170900A22413 /* TextItem.swift in Sources */,
-				AA8EBC92245F461A00A22413 /* ExerciseView.swift in Sources */,
+				AA8EBC92245F461A00A22413 /* LessonView.swift in Sources */,
 				AAFB58312455E60E00EA68AB /* TextLineView.swift in Sources */,
 				AA8EBC8C245F16BF00A22413 /* TextItemView.swift in Sources */,
-				AAC2C5E82458B18700CF3D6C /* KeyboardManager.swift in Sources */,
+				AA000E46245FF29F00FF8C67 /* LessonsListItemView.swift in Sources */,
 				AAFB57F32455880E00EA68AB /* TypeTrainer.xcdatamodeld in Sources */,
 				AAC2C6082458F22F00CF3D6C /* KeyCombination.swift in Sources */,
 			);

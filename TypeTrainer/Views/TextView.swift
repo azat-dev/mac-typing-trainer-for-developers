@@ -24,8 +24,27 @@ struct TextView: View {
 
 struct TextView_Previews: PreviewProvider {
     static var previews: some View {
-        TextView(data: typeData.map { (items) -> [TextItem] in
-            items.map { token -> TextItem in TextItem(token: token) }
-        })
+        TextView(data: [
+            [
+                TextItem(token: Token("(KC_LGUI+KC_A)")),
+                TextItem(token: Token("(KC_LGUI+KC_A)")),
+                TextItem(token: Token("(KC_LGUI+KC_A)"))
+            ],
+            [
+                TextItem(token: Token("(KC_LGUI+KC_A)")),
+                TextItem(token: Token("(KC_LGUI+KC_A)")),
+                TextItem(token: Token("(KC_LGUI+KC_A)"))
+            ],
+            [
+                TextItem(token: Token("(KC_LGUI+KC_A)")),
+                TextItem(token: Token("(KC_LGUI+KC_A)")),
+                TextItem(token: Token("(KC_LGUI+KC_A)"))
+            ],
+            [
+                TextItem(token: Token("(KC_LGUI+KC_A)")),
+                TextItem(token: Token("(KC_LGUI+KC_A)")),
+                TextItem(token: Token("(KC_LGUI+KC_A)"))
+            ]
+        ])
     }
 }

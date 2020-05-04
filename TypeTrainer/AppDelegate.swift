@@ -15,7 +15,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     var window: NSWindow!
     var appData = AppManager()
-
+    var runLoop: CFRunLoop!
+    
     func catchKeyEvents() {
         func callback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent, userInfo: UnsafeMutableRawPointer?) -> Unmanaged<CGEvent>? {
             let keyCode = event.getIntegerValueField(.keyboardEventKeycode)
@@ -79,6 +80,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
+        CFRunLoopStop(CFRunLoopGetCurrent())
     }
 
     // MARK: - Core Data stack
