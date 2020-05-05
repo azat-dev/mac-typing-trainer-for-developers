@@ -49,6 +49,19 @@ func parseKeyCodeText(text: String) throws -> KeyCode {
         "KC_DOT": .period,
         "KC_SLSH": .slash ,
         
+        
+        "KC_0": .alpha0,
+        "KC_1": .alpha1,
+        "KC_2": .alpha2,
+        "KC_3": .alpha3,
+        "KC_4": .alpha4,
+        "KC_5": .alpha5,
+        "KC_6": .alpha6,
+        "KC_7": .alpha7,
+        "KC_8": .alpha8,
+        "KC_9": .alpha9,
+        
+        
         "KC_PDOT": .numpadDecimal,
         "KC_PAST": .numpadMultiply,
         "KC_PPLS": .numpadPlus  ,

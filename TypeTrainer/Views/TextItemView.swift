@@ -27,6 +27,26 @@ extension KeyCode {
                     return "⇧"
             case .returnKey, .numpadEnter:
                 return "⏎"
+            case .alpha0, .numpad0:
+                return "0"
+            case .alpha1, .numpad1:
+                return "1"
+            case .alpha2, .numpad2:
+                return "2"
+            case .alpha3, .numpad3:
+                return "3"
+            case .alpha4, .numpad4:
+                return "4"
+            case .alpha5, .numpad5:
+                return "5"
+            case .alpha6, .numpad6:
+                return "6"
+            case .alpha7, .numpad7:
+                return "7"
+            case .alpha8, .numpad8:
+                return "8"
+            case .alpha9, .numpad9:
+                return "9"
             default:
                 return "\(self)"
         }

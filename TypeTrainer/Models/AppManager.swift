@@ -30,6 +30,8 @@ final class AppManager: ObservableObject {
         self.currentLessonText = lesson.data.map { (items) -> [TextItem] in
             items.map { token -> TextItem in TextItem(token: token) }
         }
+        
+        self.currentLessonText![0][0].isActive = true
     }
     
     func startListeningKeyEvents() {
@@ -132,37 +134,8 @@ final class AppManager: ObservableObject {
         var markWrong = false
         var markCompleted = false
         
-        func unifyModifiers(modifiers: [KeyCode]) -> Set<KeyCode> {
-            let modifiersMapping: [KeyCode: KeyCode] = [
-                .leftShift: .leftShift,
-                .rightShift: .leftShift,
-                
-                .leftAlt: .leftAlt,
-                .rightAlt: .leftAlt,
-                
-                .leftControl: .leftControl,
-                .rightControl: .leftControl,
-                
-                .command: .command
-            ]
-            
-            let unified = modifiers.map { modifiersMapping[$0]! }
-            return Set(unified)
-        }
         
-        let rightKeyCombinations = activeItem.token.rightKeyCombinations
-        
-        let rightKeyCombination = rightKeyCombinations.first { keyCombination in
-            
-            let keyCombinationModifiersSet = unifyModifiers(modifiers: keyCombination.modifiers)
-            let eventModifiersSet = unifyModifiers(modifiers: keyEvent.modifiers)
-            
-            return keyCombination.keyCode == keyEvent.keyCode &&
-                keyCombinationModifiersSet == eventModifiersSet
-            
-        }
-        
-        let isRightInput = (rightKeyCombination != nil)
+        let isRightInput = isRightKeyCombination(keyEvent: keyEvent, activeItem: activeItem)
         let isDelete = (keyEvent.keyCode == .backspace && keyEvent.modifiers.isEmpty)
         
         var nextPosition: Position = activeItemPosition
@@ -204,4 +177,59 @@ final class AppManager: ObservableObject {
         
         return true
     }
+}
+
+func unifyKeyCodes(_ keyCodes: [KeyCode]) -> Set<KeyCode> {
+    let modifiersMapping: [KeyCode: KeyCode] = [
+        .leftShift: .leftShift,
+        .rightShift: .leftShift,
+        
+        .leftAlt: .leftAlt,
+        .rightAlt: .leftAlt,
+        
+        .leftControl: .leftControl,
+        .rightControl: .leftControl,
+        
+        .command: .command,
+        
+        .alpha0: .alpha0,
+        .alpha1: .alpha1,
+        .alpha2: .alpha2,
+        .alpha3: .alpha3,
+        .alpha4: .alpha4,
+        .alpha5: .alpha5,
+        .alpha6: .alpha6,
+        .alpha7: .alpha7,
+        .alpha8: .alpha8,
+        .alpha9: .alpha9,
+        
+        .numpad0: .alpha0,
+        .numpad1: .alpha1,
+        .numpad2: .alpha2,
+        .numpad3: .alpha3,
+        .numpad4: .alpha4,
+        .numpad5: .alpha5,
+        .numpad6: .alpha6,
+        .numpad7: .alpha7,
+        .numpad8: .alpha8,
+        .numpad9: .alpha9,
+    ]
+    
+    let unified = keyCodes.map { modifiersMapping[$0] ?? $0 }
+    return Set(unified)
+}
+
+func compareKeyCodes(_ keyCodes1: [KeyCode], _ keyCode2: [KeyCode]) -> Bool {
+    return unifyKeyCodes(keyCodes1) == unifyKeyCodes(keyCode2)
+}
+
+func isRightKeyCombination(keyEvent: KeyEvent, activeItem: TextItem) -> Bool {
+
+    let rightKeyCombinations = activeItem.token.rightKeyCombinations
+    let rightKeyCombination = rightKeyCombinations.first { keyCombination in
+        return compareKeyCodes([keyCombination.keyCode], [keyEvent.keyCode]) &&
+            compareKeyCodes(keyEvent.modifiers, keyCombination.modifiers)
+    }
+    
+    return rightKeyCombination != nil
 }
