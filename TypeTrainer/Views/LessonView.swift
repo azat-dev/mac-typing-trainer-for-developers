@@ -14,7 +14,11 @@ struct LessonView: View {
     var lesson: Lesson
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
-            TextView(data: appManager.currentLessonText)
+            if appManager.currentLessonText == nil {
+                EmptyView()
+            } else {
+                TextView(data: appManager.currentLessonText!)
+            }
         }.frame(
             minWidth: 0,
             idealWidth: 0,
@@ -25,6 +29,7 @@ struct LessonView: View {
             alignment: .center
         ).background(Color.white)
         .onAppear {
+            self.appManager.setCurrentLesson(lesson: self.lesson)
             self.appManager.startListeningKeyEvents()
         }
         .onDisappear {

@@ -22,20 +22,14 @@ final class AppManager: ObservableObject {
     
     var isKeyEventListenerActive = false
     
+    
     @Published var lessons: [Lesson] = parsedLessons
-    @Published var currentLessonText: [[TextItem]]
-    
-    init() {
-        self.currentLessonText = AppManager.getData()
-    }
-    
-    static func getData() -> [[TextItem]] {
-        var result = parsedLessons[0].data.map { (items) -> [TextItem] in
+    @Published var currentLessonText: [[TextItem]]?
+
+    func setCurrentLesson(lesson: Lesson) {
+        self.currentLessonText = lesson.data.map { (items) -> [TextItem] in
             items.map { token -> TextItem in TextItem(token: token) }
         }
-        
-        result[0][0].isActive = true
-        return result
     }
     
     func startListeningKeyEvents() {
@@ -47,7 +41,7 @@ final class AppManager: ObservableObject {
     }
     
     func firstItem(where condition: (TextItem, Position) -> Bool) -> (item: TextItem, position: Position)?  {
-        for (row, rowItems) in currentLessonText.enumerated() {
+        for (row, rowItems) in currentLessonText!.enumerated() {
             for (column, item) in rowItems.enumerated() {
                 let position = Position(row, column)
                 if condition(item, position) {
@@ -66,12 +60,12 @@ final class AppManager: ObservableObject {
     func getNextItemPosition(currentPosition: Position) -> Position? {
         var nextPosition = Position(currentPosition.row, currentPosition.column + 1)
         
-        if nextPosition.column >= currentLessonText[currentPosition.row].count {
+        if nextPosition.column >= currentLessonText![currentPosition.row].count {
             nextPosition = Position(currentPosition.row + 1, 0)
         }
         
         
-        if nextPosition.row >= currentLessonText[currentPosition.row].count {
+        if nextPosition.row >= currentLessonText![currentPosition.row].count {
             return nil
         }
         
@@ -82,7 +76,7 @@ final class AppManager: ObservableObject {
         var nextPosition = Position(currentPosition.row, currentPosition.column - 1)
         
         if nextPosition.column < 0 {
-            nextPosition = Position(currentPosition.row - 1, self.currentLessonText[currentPosition.row - 1].count - 1)
+            nextPosition = Position(currentPosition.row - 1, self.currentLessonText![currentPosition.row - 1].count - 1)
         }
         
         
@@ -94,9 +88,9 @@ final class AppManager: ObservableObject {
     }
     
     func updateItems(change: (_ position: Position, _ item: TextItem) -> TextItem ) {
-        for (row, rowItems) in currentLessonText.enumerated() {
+        for (row, rowItems) in currentLessonText!.enumerated() {
             for (column, item) in rowItems.enumerated() {
-                self.currentLessonText[row][column] = change(Position(row, column), item)
+                self.currentLessonText![row][column] = change(Position(row, column), item)
             }
         }
     }
@@ -139,7 +133,7 @@ final class AppManager: ObservableObject {
         var markCompleted = false
         
         func unifyModifiers(modifiers: [KeyCode]) -> Set<KeyCode> {
-            var modifiersMapping: [KeyCode: KeyCode] = [
+            let modifiersMapping: [KeyCode: KeyCode] = [
                 .leftShift: .leftShift,
                 .rightShift: .leftShift,
                 

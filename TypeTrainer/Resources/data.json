@@ -12,5 +12,48 @@
             "aAaA (KC_LGUI+KC_A) AAAA (KC_LGUI+KC_A) aAaA (KC_LGUI+KC_A) AAA (KC_LGUI+KC_A)",
             "AaAa (KC_LGUI+KC_A) AAAA (KC_LGUI+KC_A) aAaA (KC_LGUI+KC_A) AAA (KC_LGUI+KC_A)"
         ]
+    },
+    {
+        "name": "Command and C",
+        "data": [
+            "c c c c c c C C C C c C c C c C c C",
+            "cccc CCCC cccc CCCC cccc CCCC ccccc",
+            "cCcCcC cCcCcC cCcCc CcCcC CcCcC CCCC",
+            "(KC_LGUI+KC_C) (KC_LGUI+KC_C) (KC_LGUI+KC_C) (KC_LGUI+KC_C) (KC_LGUI+KC_C) (KC_LGUI+KC_C) (KC_LGUI+KC_C)",
+            "cccc (KC_LGUI+KC_C) cccc (KC_LGUI+KC_C) cccc (KC_LGUI+KC_C) ccc (KC_LGUI+KC_C)",
+            "CCCC (KC_LGUI+KC_C) CCCC (KC_LGUI+KC_C) CCCC (KC_LGUI+KC_C) CCC (KC_LGUI+KC_C)",
+            "cccc (KC_LGUI+KC_C) CCCC (KC_LGUI+KC_C) cccc (KC_LGUI+KC_C) CCC (KC_LGUI+KC_C)",
+            "cCcC (KC_LGUI+KC_C) CCCC (KC_LGUI+KC_C) cCcC (KC_LGUI+KC_C) CCC (KC_LGUI+KC_C)",
+            "CcCc (KC_LGUI+KC_C) CCCC (KC_LGUI+KC_C) cCcC (KC_LGUI+KC_C) CCC (KC_LGUI+KC_C)"
+        ]
+    },
+    {
+        "name": "Command and V",
+        "data": [
+            "v v v v v v V V V V v V v V v V v V",
+            "vvvv VVVV vvvv VVVV vvvv VVVV vvvvv",
+            "vVvVvV vVvVvV vVvVv VvVvV VvVvV VVVV",
+            "(KC_LGUI+KC_V) (KC_LGUI+KC_V) (KC_LGUI+KC_V) (KC_LGUI+KC_V) (KC_LGUI+KC_V) (KC_LGUI+KC_V) (KC_LGUI+KC_V)",
+            "vvvv (KC_LGUI+KC_V) vvvv (KC_LGUI+KC_V) vvvv (KC_LGUI+KC_V) vvv (KC_LGUI+KC_V)",
+            "VVVV (KC_LGUI+KC_V) VVVV (KC_LGUI+KC_V) VVVV (KC_LGUI+KC_V) VVV (KC_LGUI+KC_V)",
+            "vvvv (KC_LGUI+KC_V) VVVV (KC_LGUI+KC_V) vvvv (KC_LGUI+KC_V) VVV (KC_LGUI+KC_V)",
+            "vVvV (KC_LGUI+KC_V) VVVV (KC_LGUI+KC_V) vVvV (KC_LGUI+KC_V) VVV (KC_LGUI+KC_V)",
+            "VvVv (KC_LGUI+KC_V) VVVV (KC_LGUI+KC_V) vVvV (KC_LGUI+KC_V) VVV (KC_LGUI+KC_V)"
+        ]
+    },
+    {
+        "name": "Multiple hotkeys",
+        "data": [
+            "(KC_LGUI+KC_C) some text (KC_LGUI+KC_V) some text (KC_LGUI+KC_X)",
+            "(KC_LGUI+KC_1) some text (KC_LGUI+KC_2) some text (KC_LGUI+KC_3)",
+            "(KC_LGUI+KC_C) some text (KC_LGUI+KC_V) some text (KC_LGUI+KC_X)",
+            "(KC_LGUI+KC_1) some text (KC_LGUI+KC_2) some text (KC_LGUI+KC_3)",
+            "(KC_LGUI+KC_C) some text (KC_LGUI+KC_V) some text (KC_LGUI+KC_X)",
+            "(KC_LGUI+KC_1) some text (KC_LGUI+KC_2) some text (KC_LGUI+KC_3)",
+            "(KC_LGUI+KC_C) some text (KC_LGUI+KC_V) some text (KC_LGUI+KC_X)",
+            "(KC_LGUI+KC_1) some text (KC_LGUI+KC_2) some text (KC_LGUI+KC_3)",
+            "(KC_LGUI+KC_C) some text (KC_LGUI+KC_V) some text (KC_LGUI+KC_X)",
+            "(KC_LGUI+KC_1) some text (KC_LGUI+KC_2) some text (KC_LGUI+KC_3)",
+        ]
     }
 ]

@@ -26,7 +26,7 @@ extension KeyCode {
             case .leftShift, .rightShift:
                     return "⇧"
             case .returnKey, .numpadEnter:
-                return "↵"
+                return "⏎"
             default:
                 return "\(self)"
         }
@@ -104,6 +104,13 @@ struct TextItemView_Previews: PreviewProvider {
             TextItemView(
                 textItem: TextItem(
                     token: Token("(KC_LGUI+KC_A)")
+                )
+            )
+            
+            
+            TextItemView(
+                textItem: TextItem(
+                    token: Token("\n")
                 )
             )
             

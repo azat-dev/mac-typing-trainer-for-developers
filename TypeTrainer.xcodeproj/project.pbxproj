@@ -114,12 +114,12 @@
 		AA000E47245FF2C000FF8C67 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				AA8EBC87245F02C900A22413 /* Token.swift */,
-				AAC2C6072458F22F00CF3D6C /* KeyCombination.swift */,
+				AAFB582224558D5D00EA68AB /* KeyCode.swift */,
 				AAC2C5E92458B2B800CF3D6C /* KeyEvent.swift */,
+				AAC2C6072458F22F00CF3D6C /* KeyCombination.swift */,
+				AA8EBC87245F02C900A22413 /* Token.swift */,
 				AAFB582B2455A5C600EA68AB /* Data.swift */,
 				AAFB582624558DB200EA68AB /* TextProcessing.swift */,
-				AAFB582224558D5D00EA68AB /* KeyCode.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
