@@ -18,7 +18,6 @@ struct TextView: View {
             }
         }
         .padding(0.0)
-        .border(Color.orange)
     }
 }
 

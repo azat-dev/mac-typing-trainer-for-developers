@@ -16,7 +16,6 @@ struct TextLineView: View {
                 TextItemView(textItem: self.items[index])
             }
         }.padding(0.0)
-        .border(Color.red)
     }
 }
 

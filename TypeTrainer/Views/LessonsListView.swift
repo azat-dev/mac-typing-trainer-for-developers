@@ -14,7 +14,9 @@ struct LessonsListView: View {
     var body: some View {
         NavigationView {
             List {
-                Text("Lessons").font(.title)
+                Text("Lessons")
+                    .font(.title)
+                    .padding()
                 ForEach(lessons, id: \.name) { lesson in
                     NavigationLink(destination: LessonView(lesson: lesson)) {
                         LessonsListItemView(lesson: lesson)

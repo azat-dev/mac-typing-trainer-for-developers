@@ -15,9 +15,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     var window: NSWindow!
     var appData = AppManager()
-    var runLoop: CFRunLoop!
+    var runLoopSource: CFRunLoopSource?
+    var eventTap: CFMachPort?
     
-    func catchKeyEvents() {
+    func startListeningKeyboardEvents() {
+        print("Start Listen")
         func callback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent, userInfo: UnsafeMutableRawPointer?) -> Unmanaged<CGEvent>? {
             let keyCode = event.getIntegerValueField(.keyboardEventKeycode)
             var modifiers = event.flags
@@ -54,12 +56,27 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 return
         }
         
-        let runLoopSource = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, eventTap, 0)
+        self.eventTap = eventTap
+        runLoopSource = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, eventTap, 0)
         CFRunLoopAddSource(CFRunLoopGetCurrent(), runLoopSource, .commonModes)
         CGEvent.tapEnable(tap: eventTap, enable: true)
         CFRunLoopRun()
     }
-
+    
+    func stopListeningKeyboardEvents() {
+        print("Stop Listening")
+        if runLoopSource == nil {
+            return
+        }
+        
+        if let eventTap = eventTap {
+            CGEvent.tapEnable(tap: eventTap, enable: false)
+        }
+        
+        CFRunLoopSourceInvalidate(runLoopSource)
+        runLoopSource = nil
+    }
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
@@ -74,13 +91,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.setFrameAutosaveName("Main Window")
         window.contentView = NSHostingView(rootView: contentView)
         window.makeKeyAndOrderFront(nil)
-        
-        catchKeyEvents()
+    }
+    
+    func applicationWillBecomeActive(_ notification: Notification) {
+        startListeningKeyboardEvents()
     }
 
+    func applicationWillResignActive(_ notification: Notification) {
+        stopListeningKeyboardEvents()
+    }
+    
     func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
-        CFRunLoopStop(CFRunLoopGetCurrent())
+        stopListeningKeyboardEvents()
     }
 
     // MARK: - Core Data stack
@@ -179,6 +201,5 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // If we got here, it is time to quit.
         return .terminateNow
     }
-
 }
 
