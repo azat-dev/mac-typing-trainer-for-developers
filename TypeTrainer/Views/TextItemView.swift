@@ -59,6 +59,7 @@ struct TextItemView: View {
     var representationKeyCombination: String {
         var result = [String]()
         
+        //hack
         let keyCombination = textItem.token.rightKeyCombinations[0]
         
         for key in keyCombination.modifiers {
@@ -71,7 +72,9 @@ struct TextItemView: View {
     }
     
     var representation: String {
-        if textItem.token.isGroup {
+        if textItem.token.isGroup ||
+            textItem.token.character == "\n" ||
+            textItem.token.character == " " {
             return representationKeyCombination
         }
         

@@ -42,7 +42,7 @@ class TypeTrainerTests: XCTestCase {
 
     func testParseData() {
         let lines = [
-            "Hello (KC_LGUI+KC_A)(KC_LGUI+KC_C)(KC_LGUI+KC_V)(KC_LGUI+KC_LSFT+KC_K)",
+            "Hello (KC_LGUI+KC_A)(KC_LGUI+KC_C)(KC_LGUI+KC_V)(KC_LGUI+KC_LSFT+KC_K)\n",
             "Hello (KC_LGUI+KC_A)(KC_LGUI+KC_C)(KC_LGUI+KC_V)(KC_LGUI+KC_LSFT+KC_K)",
             "Hello (KC_LGUI+KC_A)(KC_LGUI+KC_C)(KC_LGUI+KC_V)(KC_LGUI+KC_LSFT+KC_K)"
         ]

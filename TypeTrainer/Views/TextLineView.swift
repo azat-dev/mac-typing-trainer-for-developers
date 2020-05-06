@@ -15,7 +15,7 @@ struct TextLineView: View {
             ForEach(0..<items.count) { index in
                 TextItemView(textItem: self.items[index])
             }
-        }.padding(0.0)
+        }.padding()
     }
 }
 
