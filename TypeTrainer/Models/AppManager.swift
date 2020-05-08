@@ -20,9 +20,6 @@ final class AppManager: ObservableObject {
         }
     }
     
-    var isKeyEventListenerActive = false
-    
-    
     @Published var lessons: [Lesson] = parsedLessons
     @Published var currentLessonText: [[TextItem]]?
 
@@ -32,14 +29,6 @@ final class AppManager: ObservableObject {
         }
         
         self.currentLessonText![0][0].isActive = true
-    }
-    
-    func startListeningKeyEvents() {
-        self.isKeyEventListenerActive = true
-    }
-    
-    func stopListeningKeyEvents() {
-        self.isKeyEventListenerActive = false
     }
     
     func firstItem(where condition: (TextItem, Position) -> Bool) -> (item: TextItem, position: Position)?  {
@@ -60,12 +49,18 @@ final class AppManager: ObservableObject {
     }
     
     func getNextItemPosition(currentPosition: Position) -> Position? {
+        if currentPosition == Position(currentLessonText!.count, currentLessonText!.last!.count) {
+            return nil
+        }
+        
         var nextPosition = Position(currentPosition.row, currentPosition.column + 1)
+        if nextPosition.row >= currentLessonText![currentPosition.row].count {
+            return nil
+        }
         
         if nextPosition.column >= currentLessonText![currentPosition.row].count {
             nextPosition = Position(currentPosition.row + 1, 0)
         }
-        
         
         if nextPosition.row >= currentLessonText![currentPosition.row].count {
             return nil
@@ -75,18 +70,27 @@ final class AppManager: ObservableObject {
     }
     
     func getPrevItemPosition(currentPosition: Position) -> Position? {
-        var nextPosition = Position(currentPosition.row, currentPosition.column - 1)
-        
-        if nextPosition.column < 0 {
-            nextPosition = Position(currentPosition.row - 1, self.currentLessonText![currentPosition.row - 1].count - 1)
-        }
-        
-        
-        if nextPosition.row < 0 {
+        if currentPosition == Position(0, 0) {
             return nil
         }
         
-        return nextPosition
+        var prevPosition = Position(currentPosition.row, currentPosition.column - 1)
+        if prevPosition.row < 0 {
+            return nil
+        }
+        
+        if prevPosition.column < 0 {
+            prevPosition = Position(
+                currentPosition.row - 1,
+                currentLessonText![currentPosition.row - 1].count - 1
+            )
+        }
+        
+        if prevPosition.row < 0 {
+            return nil
+        }
+        
+        return prevPosition
     }
     
     func updateItems(change: (_ position: Position, _ item: TextItem) -> TextItem ) {
@@ -121,15 +125,17 @@ final class AppManager: ObservableObject {
     }
     
     func onKeyEvent(_ keyEvent: KeyEvent) -> Bool {
-        if !isKeyEventListenerActive {
-            return false
-        }
         
         if keyEvent.isKeyUp {
             return true
         }
 
-        let (activeItem, activeItemPosition) = self.getActiveItem()!
+        let activeItemData = getActiveItem()
+        if activeItemData == nil {
+            return true
+        }
+        
+        let (activeItem, activeItemPosition) = activeItemData!
         
         var markWrong = false
         var markCompleted = false
@@ -138,25 +144,30 @@ final class AppManager: ObservableObject {
         let isRightInput = isRightKeyCombination(keyEvent: keyEvent, activeItem: activeItem)
         let isDelete = (keyEvent.keyCode == .backspace && keyEvent.modifiers.isEmpty)
         
-        var nextPosition: Position = activeItemPosition
+        var nextPosition: Position? = activeItemPosition
         
         if isDelete {
             
             markCompleted = false
             markWrong = false
-            nextPosition = getPrevItemPosition(currentPosition: activeItemPosition)!
+            
+            nextPosition = getPrevItemPosition(currentPosition: activeItemPosition)
         
         } else if isRightInput {
         
             markCompleted = true
             markWrong = false
-            nextPosition = getNextItemPosition(currentPosition: activeItemPosition)!
+            nextPosition = getNextItemPosition(currentPosition: activeItemPosition)
             
         } else {
         
             markWrong = true
             markCompleted = false
-            nextPosition = getNextItemPosition(currentPosition: activeItemPosition)!
+            nextPosition = getNextItemPosition(currentPosition: activeItemPosition)
+        }
+        
+        if nextPosition == nil {
+            return true
         }
         
         updateItems { (position, item) in

@@ -30,10 +30,6 @@ struct LessonView: View {
         ).background(Color.white)
         .onAppear {
             self.appManager.setCurrentLesson(lesson: self.lesson)
-            self.appManager.startListeningKeyEvents()
-        }
-        .onDisappear {
-            self.appManager.stopListeningKeyEvents()
         }
     }
 }

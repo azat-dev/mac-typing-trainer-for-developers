@@ -14,7 +14,7 @@ import SwiftUI
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     var window: NSWindow!
-    var appData = AppManager()
+    var appManager = AppManager()
     var runLoopSource: CFRunLoopSource?
     var eventTap: CFMachPort?
     
@@ -50,7 +50,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             options: .defaultTap,
             eventsOfInterest: CGEventMask(eventMask),
             callback: callback,
-            userInfo: UnsafeMutableRawPointer(Unmanaged<AnyObject>.passUnretained(self.appData).toOpaque())
+            userInfo: UnsafeMutableRawPointer(Unmanaged<AnyObject>.passUnretained(self.appManager).toOpaque())
             ) else {
                 print("failed to create event tap")
                 return
@@ -80,7 +80,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
-        let contentView = ContentView().environmentObject(self.appData).environment(\.managedObjectContext, persistentContainer.viewContext)
+        let contentView = ContentView().environmentObject(self.appManager).environment(\.managedObjectContext, persistentContainer.viewContext)
 
         // Create the window and set the content view. 
         window = NSWindow(
