@@ -22,7 +22,12 @@ final class AppManager: ObservableObject {
     
     @Published var lessons: [Lesson] = parsedLessons
     @Published var currentLessonText: [[TextItem]]?
-
+    
+    let soundsStorage = SoundsStorage(fileNames: [
+        "right_key_press.mp3",
+        "wrong_key_press.mp3"
+    ])
+    
     func setCurrentLesson(lesson: Lesson) {
         self.currentLessonText = lesson.data.map { (items) -> [TextItem] in
             items.map { token -> TextItem in TextItem(token: token) }
@@ -184,6 +189,12 @@ final class AppManager: ObservableObject {
             }
             
             return newItem
+        }
+        
+        if markWrong {
+            soundsStorage.playSound("wrong_key_press.mp3")
+        } else {
+            soundsStorage.playSound("right_key_press.mp3")
         }
         
         return true
