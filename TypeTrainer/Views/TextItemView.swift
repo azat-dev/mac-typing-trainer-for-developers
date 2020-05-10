@@ -93,22 +93,21 @@ struct TextItemView: View {
                     .border(Color.blue, width: 3)
             
             } else if textItem.isCompleted {
-                
-                Text(representation)
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .background(Color.green)
-                    .foregroundColor(Color.white)
-                    .padding(3)
-            
-            } else if textItem.isWrongTyped {
-            
-                Text(representation)
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .background(Color.red)
-                    .foregroundColor(Color.white)
-                    .padding(3)
+                if textItem.isRightTyped {
+                    Text(representation)
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .background(Color.green)
+                        .foregroundColor(Color.white)
+                        .padding(3)
+                } else {
+                    Text(representation)
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .background(Color.red)
+                        .foregroundColor(Color.white)
+                        .padding(3)
+                }
             
             } else {
                 Text(representation)
@@ -147,14 +146,16 @@ struct TextItemView_Previews: PreviewProvider {
             TextItemView(
                 textItem: TextItem(
                     token: Token("(KC_LGUI+KC_A)"),
-                    isCompleted: true
+                    isCompleted: true,
+                    isRightTyped: true
                 )
             )
             
             TextItemView(
                 textItem: TextItem(
                     token: Token("(KC_LGUI+KC_A)"),
-                    isWrongTyped: true
+                    isCompleted: true,
+                    isRightTyped: false
                 )
             )
         }

@@ -11,7 +11,7 @@ import Foundation
 struct TextItem {
     var token: Token
     var isCompleted = false
-    var isWrongTyped = false
+    var isRightTyped = false
     var isActive = false
 }
 

@@ -106,28 +106,6 @@ final class AppManager: ObservableObject {
         }
     }
     
-    func markAsWrong(position itemPosition: Position) {
-        updateItems { (position, item) -> TextItem in
-            var newItem = item
-            if position == itemPosition {
-                newItem.isWrongTyped = true
-            }
-            
-            return newItem
-        }
-    }
-    
-    func markAsCompleted(position itemPosition: Position) {
-        updateItems { (position, item) -> TextItem in
-            var newItem = item
-            if position == itemPosition {
-                newItem.isWrongTyped = false
-                newItem.isCompleted = true
-            }
-            
-            return newItem
-        }
-    }
     
     func onKeyEvent(_ keyEvent: KeyEvent) -> Bool {
         
@@ -142,7 +120,7 @@ final class AppManager: ObservableObject {
         
         let (activeItem, activeItemPosition) = activeItemData!
         
-        var markWrong = false
+        var markRightTyped = false
         var markCompleted = false
         
         
@@ -154,20 +132,20 @@ final class AppManager: ObservableObject {
         if isDelete {
             
             markCompleted = false
-            markWrong = false
+            markRightTyped = false
             
             nextPosition = getPrevItemPosition(currentPosition: activeItemPosition)
         
         } else if isRightInput {
         
             markCompleted = true
-            markWrong = false
+            markRightTyped = true
             nextPosition = getNextItemPosition(currentPosition: activeItemPosition)
             
         } else {
         
-            markWrong = true
-            markCompleted = false
+            markRightTyped = false
+            markCompleted = true
             nextPosition = getNextItemPosition(currentPosition: activeItemPosition)
         }
         
@@ -184,17 +162,17 @@ final class AppManager: ObservableObject {
             }
             
             if position == activeItemPosition {
-                newItem.isWrongTyped = markWrong
+                newItem.isRightTyped = markRightTyped
                 newItem.isCompleted = markCompleted
             }
             
             return newItem
         }
         
-        if markWrong {
-            soundsStorage.playSound("wrong_key_press.mp3")
-        } else {
+        if isDelete || markRightTyped {
             soundsStorage.playSound("right_key_press.mp3")
+        } else {
+            soundsStorage.playSound("wrong_key_press.mp3")
         }
         
         return true
